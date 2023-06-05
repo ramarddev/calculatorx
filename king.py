@@ -1,8 +1,8 @@
-dineroTotal = 100
-monedasInicio = 30
-precioEntrada = 0.19852
-usdtGastado = round(monedasInicio * precioEntrada, 2)
-usdtRestante = round(dineroTotal - monedasInicio * precioEntrada, 2)
+dineroTotal = float(input("Ingresa el dinero a invertir: "))
+monedasInicio = float(input("Ingresa las monedas compradas en la entrada: "))
+precioEntrada = float(input("Ingresa el precio de entrada de la moneda: "))
+usdtGastado = float(round(monedasInicio * precioEntrada, 2))
+usdtRestante = float(round(dineroTotal - monedasInicio * precioEntrada, 2))
 contador = 1
 
 # Definir el ancho de cada columna
