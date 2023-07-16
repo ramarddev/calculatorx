@@ -1,6 +1,8 @@
 dineroTotal = float(input("Ingresa el dinero a invertir: "))
 monedasInicio = float(input("Ingresa las monedas compradas en la entrada: "))
 precioEntrada = float(input("Ingresa el precio de entrada de la moneda: "))
+monedasAdicionalPorc = float(input("Ingresa el porcentaje adicional de monedas a comprar: "))
+distanciaRecompra = float(input("Ingresa el porcentaje de distancia entre cada recompra nueva: "))
 usdtGastado = float(round(monedasInicio * precioEntrada, 2))
 usdtRestante = float(round(dineroTotal - monedasInicio * precioEntrada, 2))
 contador = 1
@@ -23,10 +25,8 @@ print("{:^{width}} | {:^{width}} | {:^{width}} | {:^{width}} | {:^{width}} | {:^
 
 # Ciclo hasta que se agote el dinero
 while usdtRestante > 0:
-    monedasAdicionalPorc = 40
-    distanciaRecompra = 3
 
-    monedasAdicional = round(monedasInicio * (monedasAdicionalPorc / 100), 2)
+    monedasAdicional = round(monedasInicio * (monedasAdicionalPorc / 100), 4)
     nuevoPrecio = round(precioEntrada - (precioEntrada * (distanciaRecompra / 100)), 5)
     montoAdicionalGastado = round(monedasAdicional * nuevoPrecio, 2)
     totalGastado = round(usdtGastado + montoAdicionalGastado, 2)
@@ -41,7 +41,7 @@ while usdtRestante > 0:
 
     # Imprimir valores de la tabla para la nueva operación
     print("{:^{width}} | {:^{width}} | {:^{width}} | {:^{width}} | {:^{width}} | {:^{width}}".format(
-        contador, dineroTotal, saldoRestante, monedasInicio + monedasAdicional, nuevoPrecio, montoAdicionalGastado,
+        contador, dineroTotal, saldoRestante, "{:.2f}".format(monedasInicio + monedasAdicional), nuevoPrecio, montoAdicionalGastado,
         width=column_width
     ))
 
@@ -51,5 +51,6 @@ while usdtRestante > 0:
     precioEntrada = nuevoPrecio
     usdtGastado = totalGastado
     usdtRestante = saldoRestante
+
 
 
